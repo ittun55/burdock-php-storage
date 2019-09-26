@@ -1,0 +1,28 @@
+{
+    "name": "burdock/php-storage",
+    "description": "Adapters for cloud storage services",
+    "type": "library",
+    "require": {
+        "psr/log": "^1.1",
+        "kunalvarma05/dropbox-php-sdk": "^0.2.1",
+        "aws/aws-sdk-php": "^3.112",
+        "burdock/php-config": "^0.0.1",
+        "burdock/php-utils": "^0.0.8"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hiraku Saito",
+            "email": "ittun55@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Burdock\\CloudStorage\\": "src/CloudStorage"
+        }
+    },
+    "require-dev": {
+        "monolog/monolog": "^2.0",
+        "phpunit/phpunit": "^8.3"
+    }
+}
