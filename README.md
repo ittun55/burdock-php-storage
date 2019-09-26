@@ -1,2 +1,2 @@
 # burdock-php-storage
- Adapters for several cloud storages
+ Adapters for cloud storage services
