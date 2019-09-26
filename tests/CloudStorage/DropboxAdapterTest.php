@@ -14,12 +14,13 @@ class DropboxAdapterTest extends TestCase
 {
     protected $logger  = null;
     protected $adapter = null;
+    protected static $tmp_base_dir = null;
 
     public static function setUpBeforeClass(): void
     {
-        //Fs::rmDir(realpath(__DIR__.DS.'..'.DS.'tmp'));
-        $path = realpath(__DIR__.DS.'..').DS.'tmp';
-        mkdir($path);
+        self::$tmp_base_dir = realpath(__DIR__.DS.'..').DS.'tmp';
+        if (file_exists(self::$tmp_base_dir)) Fs::rmDir(self::$tmp_base_dir);
+        mkdir(self::$tmp_base_dir);
     }
 
     public function setUp(): void
@@ -46,8 +47,9 @@ class DropboxAdapterTest extends TestCase
         $r_xls = $r_dir . '/' . $xls;
         $this->adapter->upload($l_xls, $r_xls);
 
-        $d_dir = __DIR__.DS.'tmp___'.$r_dir;
+        $d_dir = self::$tmp_base_dir . DS . $r_dir;
         mkdir($d_dir);
+
         $d_jpg = $this->adapter->download($r_jpg, $d_dir.DS.$jpg);
         $original = new \SplFileObject($l_jpg);
         $download = new \SplFileObject($d_jpg);
@@ -57,6 +59,7 @@ class DropboxAdapterTest extends TestCase
         $original = new \SplFileObject($l_xls);
         $download = new \SplFileObject($d_xls);
         $this->assertEquals($original->getSize(), $download->getSize());
+
         $list = $this->adapter->getList('/');
         $this->adapter->deleteRecursive($list);
         $download = null; //if not exists, causes Resource temporarily unavailable on rmdir...
@@ -65,6 +68,6 @@ class DropboxAdapterTest extends TestCase
 
     public static function tearDownAfterClass() : void
     {
-        Fs::rmDir(realpath(__DIR__.DS.'..'.DS.'tmp'));
+        Fs::rmDir(self::$tmp_base_dir);
     }
 }
