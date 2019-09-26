@@ -3,3 +3,7 @@
 /.phpunit.result.cache
 /.idea/
 /vendor/
+*/config.json
+*/config.yaml
+*/config.toml
+*/config.ini
