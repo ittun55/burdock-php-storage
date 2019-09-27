@@ -1,8 +1,9 @@
 <?php
 namespace Burdock\CloudStorage;
 
-use Burdock\Config\Config;
 use Aws\S3\S3Client;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 
 class AmazonS3Adapter implements StorageAdapterInterface
 {
@@ -22,18 +23,18 @@ class AmazonS3Adapter implements StorageAdapterInterface
     protected $bucket;
     protected $logger;
 
-    public function __construct(Config $config)
+    public function __construct(array $config, ?LoggerInterface $logger=null)
     {
         $this->client  = new S3Client([
             'credentials' => [
-                'key' => $config->getValue(self::AWS_S3_KEY),
-                'secret' => $config->getValue(self::AWS_S3_SECRET),
+                'key'     => $config[self::AWS_S3_KEY],
+                'secret'  => $config[self::AWS_S3_SECRET],
             ],
-            'region' => $config->getValue(self::AWS_S3_REGION),
-            'version' => 'latest',
+            'region'      => $config[self::AWS_S3_REGION],
+            'version'     => 'latest',
         ]);
-        $this->logger   = is_null($config->getLogger()) ? new NullLogger() : $config->getLogger();
-        $this->bucket = $config->getValue(self::AWS_S3_BUCKET);
+        $this->logger     = is_null($logger) ? new NullLogger() : $logger;
+        $this->bucket     = $config[self::AWS_S3_BUCKET];
     }
 
     public function getFullPath(string $path): string

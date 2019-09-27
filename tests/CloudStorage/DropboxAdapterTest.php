@@ -30,8 +30,7 @@ class DropboxAdapterTest extends TestCase
         $logger  = new Logger('DbxTest');
         $handler = new StreamHandler('php://stdout', Logger::INFO);
         $logger->pushHandler($handler);
-        $config->setLogger($logger);
-        $this->adapter = new DropboxAdapter($config);
+        $this->adapter = new DropboxAdapter($config->getValue('dropbox'), $logger);
     }
 
     public function test_fileOperation()

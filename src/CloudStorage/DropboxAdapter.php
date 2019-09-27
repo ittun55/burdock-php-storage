@@ -8,6 +8,7 @@ use Kunnu\Dropbox\DropboxFile;
 use Kunnu\Dropbox\Exceptions\DropboxClientException;
 use Kunnu\Dropbox\Models\FileMetadata;
 use Kunnu\Dropbox\Models\FolderMetadata;
+use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
 const DS = DIRECTORY_SEPARATOR;
@@ -38,16 +39,16 @@ class DropboxAdapter implements StorageAdapterInterface
     protected $base_dir;
     protected $logger;
 
-    public function __construct(Config $config)
+    public function __construct(array $config, ?LoggerInterface $logger=null)
     {
         $app = new DropboxApp(
-            $config->getValue(self::DBX_APP_KEY),
-            $config->getValue(self::DBX_APP_SECRET),
-            $config->getValue(self::DBX_ACCESS_TOKEN)
+            $config[self::DBX_APP_KEY],
+            $config[self::DBX_APP_SECRET],
+            $config[self::DBX_ACCESS_TOKEN]
         );
         $this->client   = new Dropbox($app);
-        $this->logger   = is_null($config->getLogger()) ? new NullLogger() : $config->getLogger();
-        $this->base_dir = $config->getValue(self::DBX_BASE_DIR);
+        $this->logger   = is_null($logger) ? new NullLogger() : $logger;
+        $this->base_dir = $config[self::DBX_BASE_DIR];
     }
 
     public function getFullPath(string $remote=null): string
