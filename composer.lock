@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "74c2215c6044bf7af23d03858b2d5cb2",
+    "content-hash": "6f7faa2946a38fcd4f6ed7289cee7986",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.112.8",
+            "version": "3.112.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "2a2f2bb0e05c2756573155353648521a9a08f5b3"
+                "reference": "224955fcb7ca9edc8de3e4147c0b180aeaee5a48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/2a2f2bb0e05c2756573155353648521a9a08f5b3",
-                "reference": "2a2f2bb0e05c2756573155353648521a9a08f5b3",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/224955fcb7ca9edc8de3e4147c0b180aeaee5a48",
+                "reference": "224955fcb7ca9edc8de3e4147c0b180aeaee5a48",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-09-25T18:23:09+00:00"
+            "time": "2019-09-26T18:13:00+00:00"
         },
         {
             "name": "burdock/php-chainable",
@@ -132,16 +132,16 @@
         },
         {
             "name": "burdock/php-config",
-            "version": "v0.0.1",
+            "version": "v0.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ittun55/burdock-php-config.git",
-                "reference": "d6ea9677e2250c0ce88ece2bd19c605b0173f00b"
+                "reference": "a2723fb324a4ced20eb01689b86a88582a3ac08a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ittun55/burdock-php-config/zipball/d6ea9677e2250c0ce88ece2bd19c605b0173f00b",
-                "reference": "d6ea9677e2250c0ce88ece2bd19c605b0173f00b",
+                "url": "https://api.github.com/repos/ittun55/burdock-php-config/zipball/a2723fb324a4ced20eb01689b86a88582a3ac08a",
+                "reference": "a2723fb324a4ced20eb01689b86a88582a3ac08a",
                 "shasum": ""
             },
             "require": {
@@ -171,25 +171,25 @@
                 }
             ],
             "description": "loading configuration from json/yaml/toml file",
-            "time": "2019-09-24T17:00:14+00:00"
+            "time": "2019-09-27T14:19:16+00:00"
         },
         {
             "name": "burdock/php-utils",
-            "version": "v0.0.8",
+            "version": "v0.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ittun55/burdock-php-utils.git",
-                "reference": "c52ea846cd936d3c0a9353bcdf87e40a31c0ee87"
+                "reference": "5ffa39bb55338b9e2be76045c5772e3d7fe9fd20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ittun55/burdock-php-utils/zipball/c52ea846cd936d3c0a9353bcdf87e40a31c0ee87",
-                "reference": "c52ea846cd936d3c0a9353bcdf87e40a31c0ee87",
+                "url": "https://api.github.com/repos/ittun55/burdock-php-utils/zipball/5ffa39bb55338b9e2be76045c5772e3d7fe9fd20",
+                "reference": "5ffa39bb55338b9e2be76045c5772e3d7fe9fd20",
                 "shasum": ""
             },
             "require": {
                 "burdock/php-chainable": "^0.0.2",
-                "burdock/php-config": "^0.0.1",
+                "burdock/php-config": "^0.0.2",
                 "kunalvarma05/dropbox-php-sdk": "^0.2.1",
                 "nesbot/carbon": "^2.16.3",
                 "psr/log": "^1.1"
@@ -213,7 +213,7 @@
                 }
             ],
             "description": "Burdock PHP Utilities",
-            "time": "2019-09-26T09:01:29+00:00"
+            "time": "2019-09-27T14:56:28+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
