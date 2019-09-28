@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6f7faa2946a38fcd4f6ed7289cee7986",
+    "content-hash": "09e4df1aca805f983387a3a9924c8674",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.112.9",
+            "version": "3.112.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "224955fcb7ca9edc8de3e4147c0b180aeaee5a48"
+                "reference": "d744986383812c6a9e52134adabbb5683e6750fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/224955fcb7ca9edc8de3e4147c0b180aeaee5a48",
-                "reference": "224955fcb7ca9edc8de3e4147c0b180aeaee5a48",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d744986383812c6a9e52134adabbb5683e6750fe",
+                "reference": "d744986383812c6a9e52134adabbb5683e6750fe",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-09-26T18:13:00+00:00"
+            "time": "2019-09-27T18:09:39+00:00"
         },
         {
             "name": "burdock/php-chainable",
@@ -175,16 +175,16 @@
         },
         {
             "name": "burdock/php-utils",
-            "version": "v0.0.9",
+            "version": "v0.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ittun55/burdock-php-utils.git",
-                "reference": "5ffa39bb55338b9e2be76045c5772e3d7fe9fd20"
+                "reference": "0539a2889919ef0ea8230c030c0c19a8a7dfa77d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ittun55/burdock-php-utils/zipball/5ffa39bb55338b9e2be76045c5772e3d7fe9fd20",
-                "reference": "5ffa39bb55338b9e2be76045c5772e3d7fe9fd20",
+                "url": "https://api.github.com/repos/ittun55/burdock-php-utils/zipball/0539a2889919ef0ea8230c030c0c19a8a7dfa77d",
+                "reference": "0539a2889919ef0ea8230c030c0c19a8a7dfa77d",
                 "shasum": ""
             },
             "require": {
@@ -213,7 +213,7 @@
                 }
             ],
             "description": "Burdock PHP Utilities",
-            "time": "2019-09-27T14:56:28+00:00"
+            "time": "2019-09-28T01:06:00+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
