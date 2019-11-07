@@ -1,7 +1,7 @@
 <?php
 namespace Burdock\CloudStorage;
 
-use Burdock\Config\Config;
+use InvalidArgumentException;
 use Kunnu\Dropbox\Dropbox;
 use Kunnu\Dropbox\DropboxApp;
 use Kunnu\Dropbox\DropboxFile;
@@ -39,6 +39,11 @@ class DropboxAdapter implements StorageAdapterInterface
     protected $base_dir;
     protected $logger;
 
+    /**
+     * DropboxAdapter constructor.
+     * @param array $config
+     * @param LoggerInterface|null $logger
+     */
     public function __construct(array $config, ?LoggerInterface $logger=null)
     {
         $app = new DropboxApp(
@@ -55,7 +60,7 @@ class DropboxAdapter implements StorageAdapterInterface
     {
         if (strpos($remote, '..') !== false) {
             $msg = '$remote path should not contain to move parent directory';
-            throw new \InvalidArgumentException($msg);
+            throw new InvalidArgumentException($msg);
         }
         $_path = $this->base_dir;
         if (!is_null($remote))
@@ -75,7 +80,6 @@ class DropboxAdapter implements StorageAdapterInterface
         $items = [];
         foreach ($folders->getItems() as $content) {
             if ($content instanceof FolderMetadata) {
-                $_skipPrefix = true;
                 $folder = $content->getPathDisplay();
                 $items[] = [
                     'title'    => $content->getName(), //フォルダ名
@@ -103,7 +107,7 @@ class DropboxAdapter implements StorageAdapterInterface
     public function download(string $remote, string $local, bool $overwrite=false) : string
     {
         if (!$overwrite && file_exists($local)) {
-            throw new \InvalidArgumentException($local . ' already exists');
+            throw new InvalidArgumentException($local . ' already exists');
         }
         $path = $this->getFullPath($remote);
         $file = $this->client->download($path);
@@ -127,6 +131,12 @@ class DropboxAdapter implements StorageAdapterInterface
         return $fileMeta->getId() ? true : false;
     }
 
+    /**
+     * @param string $remote
+     * @param int $depth
+     * @return bool
+     * @throws DropboxClientException
+     */
     public function delete(string $remote, int $depth = 0) : bool
     {
         $_path = ($depth === 0) ? $this->getFullPath($remote) : $remote;
@@ -134,6 +144,12 @@ class DropboxAdapter implements StorageAdapterInterface
         return ($metadata instanceof FileMetadata || $metadata instanceof FolderMetadata);
     }
 
+    /**
+     * @param $items
+     * @param int $depth
+     * @return bool
+     * @throws DropboxClientException
+     */
     public function deleteRecursive($items, int $depth = 0) : bool
     {
         foreach ($items as $item) {
@@ -149,6 +165,12 @@ class DropboxAdapter implements StorageAdapterInterface
         return true;
     }
 
+    /**
+     * @param string $remote
+     * @param int $depth
+     * @return bool
+     * @throws DropboxClientException
+     */
     public function createFolder(string $remote, int $depth = 0): bool
     {
         $_path = ($depth === 0) ? $this->getFullPath($remote) : $remote;

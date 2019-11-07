@@ -37,36 +37,63 @@ class AmazonS3Adapter implements StorageAdapterInterface
         $this->bucket     = $config[self::AWS_S3_BUCKET];
     }
 
+    /**
+     * @param string $path
+     * @return string
+     */
     public function getFullPath(string $path): string
     {
         // TODO: Implement getFullPath() method.
         throw new NotImplementedException();
     }
 
+    /**
+     * @param string $path
+     * @param int $depth
+     * @return array
+     */
     public function getList(string $path, int $depth): array
     {
         // TODO: Implement getList() method.
         throw new NotImplementedException();
     }
 
+    /**
+     * @param string $src
+     * @param string $dst
+     * @return string
+     */
     public function download(string $src, string $dst): string
     {
         // TODO: Implement getFile() method.
         throw new NotImplementedException();
     }
 
+    /**
+     * @param string $src
+     * @param string $dst
+     * @return bool
+     */
     public function upload(string $src, string $dst): bool
     {
         // TODO: Implement saveFile() method.
         throw new NotImplementedException();
     }
 
+    /**
+     * @param string $remote
+     * @return bool
+     */
     public function delete(string $remote): bool
     {
         // TODO: Implement delete() method.
         throw new NotImplementedException();
     }
 
+    /**
+     * @param string $path
+     * @return bool
+     */
     public function createFolder(string $path): bool
     {
         // TODO: Implement createFolder() method.

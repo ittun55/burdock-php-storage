@@ -2,13 +2,6 @@
     "name": "burdock/php-storage",
     "description": "Adapters for cloud storage services",
     "type": "library",
-    "require": {
-        "psr/log": "^1.1",
-        "kunalvarma05/dropbox-php-sdk": "^0.2.1",
-        "aws/aws-sdk-php": "^3.112",
-        "burdock/php-config": "^0.0.2",
-        "burdock/php-utils": "^0.0.10"
-    },
     "license": "MIT",
     "authors": [
         {
@@ -20,6 +13,13 @@
         "psr-4": {
             "Burdock\\CloudStorage\\": "src/CloudStorage"
         }
+    },
+    "require": {
+        "psr/log": "^1.1",
+        "kunalvarma05/dropbox-php-sdk": "^0.2.1",
+        "aws/aws-sdk-php": "^3.112",
+        "burdock/php-config": "^0.0.2",
+        "burdock/php-utils": "^0.0.11"
     },
     "require-dev": {
         "monolog/monolog": "^2.0",
