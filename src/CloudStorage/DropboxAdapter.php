@@ -1,6 +1,8 @@
 <?php
 namespace Burdock\CloudStorage;
 
+use Burdock\Utils\Str;
+use Exception;
 use InvalidArgumentException;
 use Kunnu\Dropbox\Dropbox;
 use Kunnu\Dropbox\DropboxApp;
@@ -71,25 +73,29 @@ class DropboxAdapter implements StorageAdapterInterface
     /**
      * @param string $remote リストを取得するリモートパス
      * @param int $depth 再帰の初回はリモートフルパスの組み立てが必要なため
+     * @param int|null $limit 再帰の階層制限 0 は制限なし
      * @return array
      */
-    public function getList(string $remote, int $depth = 0): array
+    public function getList(string $remote, int $depth = 0, ?int $limit=0): array
     {
         $_path = ($depth === 0) ? $this->getFullPath($remote) : $remote;
         $folders = $this->client->listFolder($_path);
         $items = [];
         foreach ($folders->getItems() as $content) {
             if ($content instanceof FolderMetadata) {
+                if ($limit && $limit <= $depth + 1) continue;
                 $folder = $content->getPathDisplay();
                 $items[] = [
                     'title'    => $content->getName(), //フォルダ名
                     'path'     => $folder,             //フルパス (フォルダ名含む)
-                    'children' => $this->getList($folder, $depth + 1)
+                    'content'  => $content,
+                    'children' => $this->getList($folder, $depth + 1, $limit)
                 ];
             } else {
                 $items[] = [
                     'title'       => $content->getName(),          //ファイル名
                     'path'        => $content->getPathDisplay(),   //フルパス (ファイル名含む)
+                    'content'     => $content,
                     'modified_at' => $content->getServerModified() //更新日時
                 ];
             }
@@ -150,11 +156,11 @@ class DropboxAdapter implements StorageAdapterInterface
      * @return bool
      * @throws DropboxClientException
      */
-    public function deleteRecursive($items, int $depth = 0) : bool
+    public function deleteItems($items, int $depth = 0) : bool
     {
         foreach ($items as $item) {
             if (array_key_exists('children', $item)
-                && !$this->deleteRecursive($item['children'], $depth + 1))
+                && !$this->deleteItems($item['children'], $depth + 1))
             {
                 return false;
             }
@@ -176,5 +182,19 @@ class DropboxAdapter implements StorageAdapterInterface
         $_path = ($depth === 0) ? $this->getFullPath($remote) : $remote;
         $metadata = $this->client->createFolder($_path);
         return ($metadata instanceof FolderMetadata);
+    }
+
+    public function exists(string $remote, int $depth = 0): bool
+    {
+        $_path = ($depth === 0) ? $this->getFullPath($remote) : $remote;
+        if (Str::endsWith('/', $_path)) {
+            $_path = substr($_path, 0, strlen($_path) - 1);
+        }
+        try {
+            $metadata = $this->client->getMetadata($_path);
+            return true;
+        } catch(DropboxClientException $e) {
+            return false;
+        }
     }
 }

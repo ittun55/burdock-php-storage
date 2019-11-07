@@ -33,6 +33,32 @@ class DropboxAdapterTest extends TestCase
         $this->adapter = new DropboxAdapter($config->getValue('dropbox'), $logger);
     }
 
+    public function test_getList()
+    {
+        $r_dir = Str::randomChars(8, ['/','\\',':']);
+
+        //upload samples
+        $jpg   = 'sky_mountain_sunflower.jpg';
+        $l_jpg = __DIR__ . DS . $jpg;
+        $r_jpg = $r_dir . '/' . $jpg;
+        $this->adapter->upload($l_jpg, $r_jpg);
+
+        $xls   = 'sample_template.xlsx';
+        $l_xls = __DIR__ . DS . $xls;
+        $r_xls = $r_dir . '/' . $xls;
+        $this->adapter->upload($l_xls, $r_xls);
+
+        // get list
+        $list = $this->adapter->getList($r_dir, 0, 1);
+        $this->assertEquals(2, count($list));
+
+        // delete all
+        $this->adapter->delete($r_dir);
+
+        // check directory not exists
+        $this->assertFalse($this->adapter->exists($r_dir));
+    }
+
     public function test_fileOperation()
     {
         $r_dir = Str::randomChars(8, ['/','\\',':']);
@@ -59,8 +85,11 @@ class DropboxAdapterTest extends TestCase
         $download = new \SplFileObject($d_xls);
         $this->assertEquals($original->getSize(), $download->getSize());
 
-        $list = $this->adapter->getList('/');
-        $this->adapter->deleteRecursive($list);
+        $list = $this->adapter->getList('/', 0);
+
+        $this->adapter->deleteItems($list);
+        $this->assertFalse($this->adapter->exists($r_dir));
+        $this->assertTrue($this->adapter->exists('/'));
         $download = null; //if not exists, causes Resource temporarily unavailable on rmdir...
         Fs::rmDir($d_dir);
     }
