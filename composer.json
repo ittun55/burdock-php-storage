@@ -18,8 +18,8 @@
         "psr/log": "^1.1",
         "kunalvarma05/dropbox-php-sdk": "^0.2.1",
         "aws/aws-sdk-php": "^3.112",
-        "burdock/php-config": "^0.0.2",
-        "burdock/php-utils": "^0.0.11"
+        "burdock/php-config": "^0.0.3",
+        "burdock/php-utils": "^0.0.12"
     },
     "require-dev": {
         "monolog/monolog": "^2.0",

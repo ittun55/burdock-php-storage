@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d849ad5c959df72fd5eb16d18ca592f7",
+    "content-hash": "8608fb2d37161c426c1fc92e599f679b",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -132,16 +132,16 @@
         },
         {
             "name": "burdock/php-config",
-            "version": "v0.0.2",
+            "version": "v0.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ittun55/burdock-php-config.git",
-                "reference": "a2723fb324a4ced20eb01689b86a88582a3ac08a"
+                "reference": "9f2fd7ac32446f58dfe1c1cb1bca10cbf039690b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ittun55/burdock-php-config/zipball/a2723fb324a4ced20eb01689b86a88582a3ac08a",
-                "reference": "a2723fb324a4ced20eb01689b86a88582a3ac08a",
+                "url": "https://api.github.com/repos/ittun55/burdock-php-config/zipball/9f2fd7ac32446f58dfe1c1cb1bca10cbf039690b",
+                "reference": "9f2fd7ac32446f58dfe1c1cb1bca10cbf039690b",
                 "shasum": ""
             },
             "require": {
@@ -171,27 +171,26 @@
                 }
             ],
             "description": "loading configuration from json/yaml/toml file",
-            "time": "2019-09-27T14:19:16+00:00"
+            "time": "2019-11-07T08:08:33+00:00"
         },
         {
             "name": "burdock/php-utils",
-            "version": "v0.0.11",
+            "version": "v0.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ittun55/burdock-php-utils.git",
-                "reference": "897c06eeeb2cff8dfcc71e9fdb8bf0a726bd0e91"
+                "reference": "f922a380f31d66a8dbb691f17182d251a4131561"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ittun55/burdock-php-utils/zipball/897c06eeeb2cff8dfcc71e9fdb8bf0a726bd0e91",
-                "reference": "897c06eeeb2cff8dfcc71e9fdb8bf0a726bd0e91",
+                "url": "https://api.github.com/repos/ittun55/burdock-php-utils/zipball/f922a380f31d66a8dbb691f17182d251a4131561",
+                "reference": "f922a380f31d66a8dbb691f17182d251a4131561",
                 "shasum": ""
             },
             "require": {
                 "burdock/php-chainable": "^0.0.2",
-                "burdock/php-config": "^0.0.2",
                 "kunalvarma05/dropbox-php-sdk": "^0.2.1",
-                "nesbot/carbon": "^2.16.3",
+                "nesbot/carbon": "^2.26",
                 "psr/log": "^1.1"
             },
             "require-dev": {
@@ -213,7 +212,7 @@
                 }
             ],
             "description": "Burdock PHP Utilities",
-            "time": "2019-11-07T04:50:31+00:00"
+            "time": "2019-11-07T09:25:37+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
