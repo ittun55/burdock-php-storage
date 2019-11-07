@@ -86,10 +86,10 @@ class DropboxAdapter implements StorageAdapterInterface
                 if ($limit && $limit <= $depth + 1) continue;
                 $folder = $content->getPathDisplay();
                 $items[] = [
-                    'title'    => $content->getName(), //フォルダ名
-                    'path'     => $folder,             //フルパス (フォルダ名含む)
-                    'content'  => $content,
-                    'children' => $this->getList($folder, $depth + 1, $limit)
+                    'title'       => $content->getName(), //フォルダ名
+                    'path'        => $folder,             //フルパス (フォルダ名含む)
+                    'content'     => $content,
+                    'children'    => $this->getList($folder, $depth + 1, $limit)
                 ];
             } else {
                 $items[] = [
